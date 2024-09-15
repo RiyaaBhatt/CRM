@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Header from "./layout/Header";
-import Dashboard from "./Leads/Dashboard";
+// import Dashboard from "./Leads/Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
+import Sidebar2 from "./Dashboard/Sidebar2";
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
+import Home from '../pages/Dashboard/home'
+import Analytics from "../pages/Dashboard/analytics";
+import Customer from "../pages/Dashboard/customer";
+import Leads from "../pages/Dashboard/leads"
+import Pipeline from "../pages/Dashboard/pipeline";
 import PrivateRoute from "./common/PrivateRoute";
 import { Provider } from "react-redux";
 import { Provider as AlertProvider, positions } from "react-alert";
@@ -18,6 +25,7 @@ const alertOptions = {
 
 import store from "../store";
 import Alerts from "./layout/Alerts";
+import './App.css';
 
 class App extends Component {
     componentDidMount() {
@@ -33,10 +41,14 @@ class App extends Component {
                             <Alerts />
                             <div className='container'>
                                 <Routes>
-                                    <Route path="/" element={<PrivateRoute element={Dashboard} />} />
+                                    <Route path="/" element={<PrivateRoute element={Sidebar2} />} />
                                     <Route path="/register" element={<Register />} />
                                     <Route path="/login" element={<Login />} />
-
+                                    <Route path='/home' element={<Home/>} />
+                                    <Route path='/customer' element={<Customer/>} />
+                                    <Route path='/leads' element={<Leads/>} />
+                                    <Route path='/analytics' element={<Analytics/>} />
+                                    <Route path='/pipeline' element={<Pipeline/>} />
                                 </Routes>
                             </div>
                         </>

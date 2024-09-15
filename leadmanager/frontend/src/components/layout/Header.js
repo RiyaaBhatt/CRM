@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/auth';
+import SearchBar from './SearchBar';
 
 const Header = () => {
 
@@ -10,11 +11,12 @@ const Header = () => {
 
   const authLinks = (
     <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-      <span className='navbar-text mr-3'>
+      <span className='navbar-text text-light mr-3'>
         <strong>{user ? `Welcome ${user.username}` : ""}</strong>
+
       </span>
       <li className="nav-item">
-        <button className='nav-link btn btn-info btn-sm text-dark'
+        <button className='nav-link btn btn-info btn-sm text-light'
           onClick={() => {
             console.log("Logout button clicked"); // Add this line
             dispatch(logout());
@@ -35,7 +37,7 @@ const Header = () => {
   );
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-light px-4">
+    <nav className="navbar navbar-expand-sm navbar-dark px-4 bgcol">
       <button
         className="navbar-toggler"
         type="button"
@@ -49,6 +51,7 @@ const Header = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a className="navbar-brand" href="#">CRM Model</a>
+        {isAuthenticated && <SearchBar /> }
         {isAuthenticated ? authLinks : guestLinks}
       </div>
     </nav>
