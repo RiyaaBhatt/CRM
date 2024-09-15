@@ -1,0 +1,116 @@
+/* index.css or global.css */
+:root {
+    /* --primary-color: #5F229D;4C2A72
+    --secondary-color: #51d6ca; */
+    --primary-color: #6A1B9A;
+    --secondary-color: #00BFA5;
+}
+
+.bgcol{
+    background-color: var(--primary-color);
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .search-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+    border: 1px solid #ced4da;
+  }
+  
+  .search-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+  
+  .search-btn:hover {
+    background-color: #e9ecef;
+  }
+
+  
+  
+
+  /* 2 */
+  /* Sidebar general styles */
+.sidebar {
+    position: fixed;
+    top: 56px; /* Adjust as per your navbar height */
+    left: 0;
+    width: 80px;
+    height: 100%;
+    padding: 10px;
+    transition: width 0.3s ease;
+    background-color: var(--primary-color);
+    z-index: 10000;
+  }
+  
+  .sidebar.hover {
+    width: 200px;
+  }
+  
+  /* Default styles for the nav link (smaller sidebar) */
+  .sidebar .nav-link {
+    color: #fff;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    transition: background-color 0.2s ease, padding 0.3s ease , min-width 0.8 ease;
+    overflow: hidden; /* Prevent background from spilling out */
+  }
+  
+  /* Styles for expanded sidebar */
+  .sidebar.hover .nav-link {
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  /* Add active state for when a link is selected */
+  .sidebar .nav-link.active {
+    background-color: var(--secondary-color); /* Change the background color */
+    border-radius: 5px;
+     /* Match sidebar's small width */
+    transition: width 0.3s ease; /* Smooth transition */
+    overflow: hidden;
+    width: 60px
+  }
+  
+  /* Expand active link background when sidebar is expanded */
+  .sidebar.hover .nav-link.active {
+    width: 180px; /* Match sidebar's larger width */
+  }
+  
+  /* Adjust hover color */
+  .linkcont:hover{
+    background-color: var(--secondary-color);
+    width: 180px;
+  }
+  
+  /* Sidebar icon styling */
+  .sidebar-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+  /* Hide text when sidebar is not expanded */
+  .sidebar-text {
+    display: none; /* Text hidden when sidebar is not expanded */
+  }
+  
+  /* Show text when sidebar is expanded */
+  .sidebar.hover .sidebar-text {
+    display: inline;
+  }
+  
