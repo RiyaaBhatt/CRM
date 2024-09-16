@@ -26,6 +26,8 @@ const alertOptions = {
 import store from "../store";
 import Alerts from "./layout/Alerts";
 import './App.css';
+import LeadEmailHistory from "./email/LeadEmailHistory";
+import Contact from "./Leads/Contact";
 
 class App extends Component {
     componentDidMount() {
@@ -41,14 +43,17 @@ class App extends Component {
                             <Alerts />
                             <div className='container'>
                                 <Routes>
+                                <Route  path="/emails/:recipient_email" element={<LeadEmailHistory/>} />
+
                                     <Route path="/" element={<PrivateRoute element={Sidebar2} />} />
                                     <Route path="/register" element={<Register />} />
                                     <Route path="/login" element={<Login />} />
                                     <Route path='/home' element={<Home/>} />
                                     <Route path='/customer' element={<Customer/>} />
                                     <Route path='/leads' element={<Leads/>} />
-                                    <Route path='/analytics' element={<Analytics/>} />
+                                    <Route path='/analytics' element={<Contact/>} />
                                     <Route path='/pipeline' element={<Pipeline/>} />
+
                                 </Routes>
                             </div>
                         </>

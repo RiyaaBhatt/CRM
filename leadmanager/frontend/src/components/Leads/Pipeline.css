@@ -1,0 +1,18 @@
+.pipeline-section {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .pipeline-section h4 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .table-responsive {
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: auto;
+  }
+  

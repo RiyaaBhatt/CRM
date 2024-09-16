@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_LEADS, DELETE_LEAD, ADD_LEAD } from "./types";
+import { GET_LEADS, DELETE_LEAD, ADD_LEAD,UPDATE_LEAD } from "./types";
 import { returnErrors } from "./messages";
 import { tokenConfig } from "../actions/auth"
 
@@ -48,3 +48,14 @@ export const addLead = (lead) => (dispatch, getState) => {
             (err.response.data, err.response.status)
         ));
 }
+export const updateLead = (id,lead) => (dispatch,getState) => {
+    axios.put(`/api/leads/${lead.id}/`, lead,tokenConfig(getState))
+      .then(res => {
+        dispatch({
+          type: UPDATE_LEAD,
+          payload: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  };
+  

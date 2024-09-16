@@ -50,7 +50,7 @@ const Sidebar2 = () => {
         <LinkContainer to="/analytics" className="linkcont">
           <Nav.Link>
           <BiGitBranch className="sidebar-icon" />
-            <span className="sidebar-text">Analytics</span>
+            <span className="sidebar-text">Contact</span>
           </Nav.Link>
         </LinkContainer>
       </Nav>
