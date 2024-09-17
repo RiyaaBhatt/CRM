@@ -39,20 +39,21 @@ class App extends Component {
                 <AlertProvider template={AlertTemplate} {...alertOptions}>
                     <Router>
                         <>
+
                             <Header />
                             <Alerts />
                             <div className='container'>
                                 <Routes>
-                                <Route  path="/emails/:recipient_email" element={<LeadEmailHistory/>} />
+                                    <Route path="/emails/:recipient_email" element={<LeadEmailHistory />} />
 
                                     <Route path="/" element={<PrivateRoute element={Sidebar2} />} />
                                     <Route path="/register" element={<Register />} />
                                     <Route path="/login" element={<Login />} />
-                                    <Route path='/home' element={<Home/>} />
-                                    <Route path='/customer' element={<Customer/>} />
-                                    <Route path='/leads' element={<Leads/>} />
-                                    <Route path='/analytics' element={<Contact/>} />
-                                    <Route path='/pipeline' element={<Pipeline/>} />
+                                    <Route path='/home' element={<PrivateRoute element={Home} />} />
+                                    <Route path='/customer' element={<PrivateRoute element={Customer} />} />
+                                    <Route path='/leads' element={<PrivateRoute element={Leads} />} />
+                                    <Route path='/analytics' element={<PrivateRoute element={Contact} />} />
+                                    <Route path='/pipeline' element={<PrivateRoute element={Pipeline} />} />
 
                                 </Routes>
                             </div>

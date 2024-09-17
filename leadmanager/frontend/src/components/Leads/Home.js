@@ -119,9 +119,9 @@ const HomePage = () => {
   );
 };
 
-HomePage.propTypes = {
-  leads: PropTypes.array,
-  getLeads: PropTypes.func.isRequired,
-};
+// HomePage.propTypes = {
+//   leads: PropTypes.array,
+//   getLeads: PropTypes.func.isRequired,
+// };
 
 export default HomePage;
