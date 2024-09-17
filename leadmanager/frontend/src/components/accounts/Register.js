@@ -42,7 +42,7 @@ const Register = () => {
   const isAuthenticated = useSelector((state) => (state.auth.isAuthenticated));
   // Redirect if authenticated
   if (isAuthenticated) {
-    return <Navigate to="/" />;
+    return <Navigate to="/home" />;
   }
 
   return (

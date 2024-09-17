@@ -37,7 +37,7 @@ const Header = () => {
   );
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark px-4 bgcol">
+    <nav className="navbar navbar-expand-sm navbar-dark px-4 bgcol" style={style.fixm}>
       <button
         className="navbar-toggler"
         type="button"
@@ -51,11 +51,19 @@ const Header = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a className="navbar-brand" href="#">CRM Model</a>
-        {isAuthenticated && <SearchBar /> }
+        {isAuthenticated && <SearchBar />}
         {isAuthenticated ? authLinks : guestLinks}
       </div>
     </nav>
   );
 };
-
+const style = {
+  fixm: {
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+    zIndex: 1000,
+    boxShadow: '0 4px 2px -2px gray',
+  }
+};
 export default Header;
