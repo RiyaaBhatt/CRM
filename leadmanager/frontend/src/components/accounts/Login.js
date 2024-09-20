@@ -12,7 +12,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => (state.auth.isAuthenticated));
-
+  const currentUsername = useSelector((state) => state.auth.user?.username);
   const [state, setState] = useState({
     username: "",
     password: ""
@@ -29,11 +29,12 @@ const Login = () => {
 
   const { username, password } = state;
 
-  // Redirect if authenticated
   if (isAuthenticated) {
+    if (currentUsername === 'crmmanager') {
+      return <Navigate to="/crmmain" />;
+    }
     return <Navigate to="/home" />;
   }
-
   return (
     <React.Fragment>
       <div className="auth-wrapper">

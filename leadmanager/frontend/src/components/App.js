@@ -5,6 +5,8 @@ import Header from "./layout/Header";
 import Dashboard from "./Dashboard/Dashboard";
 import Sidebar2 from "./Dashboard/Sidebar2";
 import Login from "./accounts/Login";
+import CompanyDetail from "./accounts/CompanyDetail";
+
 import Register from "./accounts/Register";
 import Home from '../pages/Dashboard/home'
 import Analytics from "../pages/Dashboard/analytics";
@@ -28,6 +30,10 @@ import Alerts from "./layout/Alerts";
 import './App.css';
 import LeadEmailHistory from "./email/LeadEmailHistory";
 import Contact from "./Leads/Contact";
+import CrmMainDashboard from "./crmmanager/CrmMainDashboard";
+import UsageAnalysis from "./crmmanager/UsageAnalysis";
+import DataTracking from "./crmmanager/DataTracking";
+import Issue from "./crmmanager/Issue";
 
 class App extends Component {
     componentDidMount() {
@@ -54,7 +60,13 @@ class App extends Component {
                                     <Route path='/leads' element={<PrivateRoute element={Leads} />} />
                                     <Route path='/analytics' element={<PrivateRoute element={Contact} />} />
                                     <Route path='/pipeline' element={<PrivateRoute element={Pipeline} />} />
+                                    <Route path='/crmmain' element={<PrivateRoute element={CrmMainDashboard} />} />
+                                    <Route path='/crm-usage-analysis' element={<PrivateRoute element={UsageAnalysis} />} />
+                                    <Route path='/company-data-tracking' element={<PrivateRoute element={DataTracking} />} />
+                                    <Route path='/issue-resolvation' element={<PrivateRoute element={Issue} />} />
+                                    <Route path='/companydetail' element={<PrivateRoute element={CompanyDetail} />} />
 
+                                    
                                 </Routes>
                             </div>
                         </>

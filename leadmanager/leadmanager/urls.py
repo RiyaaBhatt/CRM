@@ -7,5 +7,6 @@ urlpatterns = [
     path('',include('frontend.urls')),
     path('',include('leads.urls')),
     path('',include('accounts.urls')),
-    path('',include("Email.urls"))
+    path('',include("Email.urls")),
+    path('api/',include("company.urls"))
 ]

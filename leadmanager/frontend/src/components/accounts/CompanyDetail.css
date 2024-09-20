@@ -1,0 +1,16 @@
+.company-detail-container {
+    margin-top: 35px; /* Add top margin */
+    padding: 25px;
+    background-color: #f9f9f9; /* Optional: Add a light background */
+    border-radius: 8px; /* Optional: Add rounded corners */
+  }
+  
+  .submit-button {
+    background-color: #6a1b9a; /* Use your specified color */
+    border: none; /* Remove default border */
+  }
+  
+  .submit-button:hover {
+    background-color: #5e1a8a; /* Darker shade on hover */
+  }
+  
