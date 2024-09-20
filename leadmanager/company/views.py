@@ -20,3 +20,12 @@ def get_companies(request):
         companies = Company.objects.all()
         serializer = CompanySerializer(companies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+@api_view(['GET'])
+def get_company_by_user(request, user_id):
+    if request.method == 'GET':
+        try:
+            companies = Company.objects.filter(user_id=user_id)
+            serializer = CompanySerializer(companies, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Company.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
