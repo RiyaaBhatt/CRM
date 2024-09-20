@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getLeads } from '../../actions/leads';
 import Sidebar2 from '../Dashboard/Sidebar2';
-
+import './Leads.css'
 const ContactPage = () => {
     const dispatch = useDispatch();
     const leads = useSelector(state => state.leads.leads || []);

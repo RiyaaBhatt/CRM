@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'knox',
     'Email',
     'channels',
-    'corsheaders','company'
+    'corsheaders','company','issue'
 ]
 ASGI_APPLICATION = 'email_project.asgi.application'
 

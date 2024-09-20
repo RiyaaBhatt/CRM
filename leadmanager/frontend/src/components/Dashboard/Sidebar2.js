@@ -11,7 +11,7 @@ import { MdAnalytics } from 'react-icons/md';
 import { BiGitBranch } from 'react-icons/bi';
 // Import custom styles
 // import './Sidebar.css';
-
+import { MdReportProblem } from 'react-icons/md'; 
 
 const Sidebar2 = () => {
   const [hover, setHover] = useState(false);
@@ -53,6 +53,13 @@ const Sidebar2 = () => {
             <span className="sidebar-text">Contact</span>
           </Nav.Link>
         </LinkContainer>
+        <LinkContainer to="/issues" className="linkcont">
+  <Nav.Link>
+    <MdReportProblem className="sidebar-icon" />
+    <span className="sidebar-text">Issue</span>
+  </Nav.Link>
+</LinkContainer>
+
       </Nav>
     </div>
   );

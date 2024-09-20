@@ -1,0 +1,82 @@
+import React, { useState, useEffect } from 'react';
+import CreateIssue from '../issue/CreateIssue';
+import axios from 'axios';
+import CrmMainDashboard from './CrmMainDashboard';
+
+const IssueManager = () => {
+  const [show, setShow] = useState(false);
+  const [issues, setIssues] = useState([]);
+
+  const fetchIssues = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/issue/');
+      setIssues(response.data);
+    } catch (error) {
+      console.error('Error fetching issues:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchIssues();
+  }, []);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const updateIssueStatus = async (id, newStatus) => {
+    try {
+      await axios.patch(`http://127.0.0.1:8000/api/issue/${id}/`, { status: newStatus });
+      fetchIssues(); // Refresh issues after update
+    } catch (error) {
+      console.error('Error updating issue status:', error);
+    }
+  };
+
+  return (
+    <div>
+        <CrmMainDashboard/>
+      <button onClick={handleShow}>Create Issue</button>
+      <CreateIssue show={show} handleClose={handleClose} fetchIssues={fetchIssues} />
+      
+      <h2>Issues</h2>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>userid</th>
+            <th>Issue Type</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Created At</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+          {issues.map((issue) => (
+            <tr key={issue.id}>
+                <td>{issue.username}</td>
+              <td>{issue.issue_type}</td>
+              <td>{issue.description}</td>
+              <td>
+                <select
+                  value={issue.status}
+                  onChange={(e) => updateIssueStatus(issue.id, e.target.value)}
+                >
+                  <option value="Open">Open</option>
+                  <option value="Closed">Closed</option>
+                  <option value="Resolved">Resolved</option>
+                  <option value="In Progress">In Progress</option>
+                </select>
+              </td>
+              <td>{issue.priority}</td>
+              <td>{new Date(issue.created_at).toLocaleString()}</td>
+        
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default IssueManager;

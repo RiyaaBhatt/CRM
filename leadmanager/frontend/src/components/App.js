@@ -34,6 +34,8 @@ import CrmMainDashboard from "./crmmanager/CrmMainDashboard";
 import UsageAnalysis from "./crmmanager/UsageAnalysis";
 import DataTracking from "./crmmanager/DataTracking";
 import Issue from "./crmmanager/Issue";
+import IssueManagement from "./issue/IssueManagement";
+import IssueManager from "./crmmanager/IssueManager";
 
 class App extends Component {
     componentDidMount() {
@@ -63,9 +65,9 @@ class App extends Component {
                                     <Route path='/crmmain' element={<PrivateRoute element={CrmMainDashboard} />} />
                                     <Route path='/crm-usage-analysis' element={<PrivateRoute element={UsageAnalysis} />} />
                                     <Route path='/company-data-tracking' element={<PrivateRoute element={DataTracking} />} />
-                                    <Route path='/issue-resolvation' element={<PrivateRoute element={Issue} />} />
+                                    <Route path='/issue-resolvation' element={<PrivateRoute element={IssueManager} />} />
                                     <Route path='/companydetail' element={<PrivateRoute element={CompanyDetail} />} />
-
+                                    <Route path="/issues" element={<PrivateRoute element={IssueManagement} />}/> 
                                     
                                 </Routes>
                             </div>
