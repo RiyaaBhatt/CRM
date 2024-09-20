@@ -28,7 +28,7 @@ const Leads = ({ leads, getLeads, deleteLead, updateLead }) => {
   const filteredLeads = leads.filter(lead => !lead.is_contacted);
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-1">
       <h3 className="text-center mb-4">Leads Table</h3>
       <div className="table-responsive">
         <table className="table table-striped table-bordered">
@@ -51,7 +51,7 @@ const Leads = ({ leads, getLeads, deleteLead, updateLead }) => {
                 <td>{lead.name}</td>
                 <td>{lead.email}</td>
                 <td>{lead.message}</td>
-                
+
                 {/* Dropdown for status */}
                 <td>
                   <select
