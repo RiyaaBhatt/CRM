@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getLeads, deleteLead, updateLead } from '../../actions/leads';
+import { Container, Table, Form, Button, Card } from 'react-bootstrap';
+import './Leads.css'; // Import custom CSS file
 
 const Leads = ({ leads, getLeads, deleteLead, updateLead }) => {
+  const [searchTerm, setSearchTerm] = useState(''); // State for search input
+
   useEffect(() => {
     getLeads();
   }, [getLeads]);
@@ -24,15 +28,49 @@ const Leads = ({ leads, getLeads, deleteLead, updateLead }) => {
     updateLead(lead.id, updatedLead); // Pass ID and updatedLead
   };
 
-  // Filter out leads that are already contacted
-  const filteredLeads = leads.filter(lead => !lead.is_contacted);
+  const getStatusStyle = (status) => {
+    switch (status) {
+      case 'new':
+        return { backgroundColor: '#f5f5f5', color: 'black' }; // Light gray
+      case 'contacted':
+        return { backgroundColor: '#ffeb3b', color: 'black' }; // Yellow
+      case 'interested':
+        return { backgroundColor: '#4caf50', color: 'white' }; // Green
+      case 'not_interested':
+        return { backgroundColor: '#f44336', color: 'white' }; // Red
+      case 'converted':
+        return { backgroundColor: '#03a9f4', color: 'white' }; // Blue
+      default:
+        return {}; // Default style
+    }
+  };
+
+  // Filter leads based on search term
+  const filteredLeads = leads
+    .filter(lead => !lead.is_contacted) // Exclude contacted leads
+    .filter(lead => lead.name.toLowerCase().includes(searchTerm.toLowerCase())); // Filter by search term
 
   return (
-    <div className="container mt-1">
-      <h3 className="text-center mb-4">Leads Table</h3>
+    <Container className="mt-4">
+      <strong><h3 className="text-center mb-4" style={{ color: '#6a1b9a' }}>Leads Table</h3></strong>
+
+      {/* Search bar */}
+      <Card className="p-3 mb-4" style={{ borderColor: '#6a1b9a' }}>
+        <Form.Group controlId="searchLeads">
+          <Form.Control
+            type="text"
+            placeholder="Search by name"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="form-control-lg"
+            style={{ borderColor: '#6a1b9a' }}
+          />
+        </Form.Group>
+      </Card>
+
       <div className="table-responsive">
-        <table className="table table-striped table-bordered">
-          <thead className="thead-dark">
+        <Table bordered hover className="shadow-sm custom-table">
+          <thead className="custom-thead">
             <tr>
               <th>ID</th>
               <th>Name</th>
@@ -41,7 +79,7 @@ const Leads = ({ leads, getLeads, deleteLead, updateLead }) => {
               <th>Status</th>
               <th>Contact</th>
               <th>Created At</th>
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -52,30 +90,32 @@ const Leads = ({ leads, getLeads, deleteLead, updateLead }) => {
                 <td>{lead.email}</td>
                 <td>{lead.message}</td>
 
-                {/* Dropdown for status */}
-                <td>
-                  <select
+                {/* Status Dropdown with dynamic inline style */}
+                <td style={getStatusStyle(lead.status)}>
+                  <Form.Control
+                    as="select"
                     value={lead.status}
                     onChange={(e) => handleStatusChange(lead, e)}
-                    className="form-select"
+                    className="form-select no-border-dropdown"
                   >
                     <option value="new">New</option>
                     <option value="contacted">Contacted</option>
                     <option value="interested">Interested</option>
                     <option value="not_interested">Not Interested</option>
                     <option value="converted">Converted</option>
-                  </select>
+                  </Form.Control>
                 </td>
 
-                {/* Button for Contact */}
                 <td>
                   {!lead.is_contacted ? (
-                    <button
+                    <Button
                       onClick={() => handleContactClick(lead)}
-                      className="btn btn-success btn-sm"
+                      variant="success"
+                      size="sm"
+                      style={{ backgroundColor: '#6a1b9a', borderColor: '#6a1b9a' }}
                     >
                       Contact
-                    </button>
+                    </Button>
                   ) : (
                     <span>Contacted</span>
                   )}
@@ -83,19 +123,20 @@ const Leads = ({ leads, getLeads, deleteLead, updateLead }) => {
 
                 <td>{lead.created_at}</td>
                 <td>
-                  <button
+                  <Button
                     onClick={() => deleteLead(lead.id)}
-                    className="btn btn-danger btn-sm"
+                    variant="danger"
+                    size="sm"
                   >
                     Delete
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
-    </div>
+    </Container>
   );
 };
 
