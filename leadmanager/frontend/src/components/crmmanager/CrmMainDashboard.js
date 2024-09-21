@@ -18,13 +18,13 @@ const CrmMainDashboard = () => {
       onMouseLeave={() => setHover(false)}
     >
       <Nav className="flex-column">
-        {/* CRM Usage Analysis */}
+        {/* CRM Usage Analysis
         <LinkContainer to="/crm-usage-analysis" className="linkcont">
           <Nav.Link>
             <MdAnalytics className="sidebar-icon" /> 
             <span className="sidebar-text">CRM Usage Analysis</span>
           </Nav.Link>
-        </LinkContainer>
+        </LinkContainer> */}
 
         {/* Company Data Tracking */}
         <LinkContainer to="/company-data-tracking" className="linkcont">

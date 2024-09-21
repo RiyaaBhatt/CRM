@@ -51,7 +51,7 @@ const Header = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a className="navbar-brand" href="#">CRM Model</a>
-        {isAuthenticated && <SearchBar />}
+        {/* {isAuthenticated && <SearchBar />} */}
         {isAuthenticated ? authLinks : guestLinks}
       </div>
     </nav>
